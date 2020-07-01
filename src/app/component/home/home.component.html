@@ -1,1 +1,103 @@
-<p>home works!</p>
+<mat-card>Welcome to Workout Tracker! Begin a workout or first create a profile to utilize all features!</mat-card>
+
+
+<mat-accordion>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Create a profile
+      </mat-panel-title>
+      <mat-panel-description>
+        This enables you to save workout plans, save created exercises, and log your workout history
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <form class="mainForm">
+
+      <mat-form-field appearance="outline" id="firstOfItsName">
+        <mat-label>Create username</mat-label>
+        <input matInput type="text" (change)="checkUsername($event.target.value)" placeholder="Ex. pat@example.com"
+          [formControl]="userFormControl">
+        <mat-icon *ngIf="userFormControl.valid" matffix>check_circle</mat-icon>
+        <mat-hint>Minimum of 8 characters</mat-hint>
+        <mat-error *ngIf="userFormControl.hasError('username') && !userFormControl.hasError('required')">
+          Please enter a username with 8 or more characters
+        </mat-error>
+        <mat-error *ngIf="userFormControl.hasError('required')">
+          A username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" placeholder="Ex. pat@example.com" [formControl]="emailFormControl">
+        <mat-icon *ngIf="emailFormControl.valid" matSuffix>check_circle</mat-icon>
+        <mat-hint>We do not share your information</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Create a password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl1"
+          placeholder="Ex. *********">
+        <mat-hint>Minimum of 10 characters</mat-hint>
+        <mat-error *ngIf="passwordFormControl1.hasError('password') && !passwordFormControl1.hasError('required')">
+          Please enter a password with 10 or more characters
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl1.hasError('required')">
+          A password is <strong>required</strong>
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Re-enter password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl2"
+          placeholder="Ex. *********">
+        <mat-hint>Minimum of 10 characters</mat-hint>
+        <mat-error *ngIf="passwordFormControl2.hasError('password') && !passwordFormControl2.hasError('required')">
+          Please enter a password with 10 or more characters
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl2 != passwordFormControl2">
+          Please ensure passwords match!
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl2.hasError('required')">
+          A password is <strong>required</strong>
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+    </form>
+
+    <button mat-button (click)="openDialog()">Read Terms of Service & Create Profile</button>
+
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Begin exercising
+      </mat-panel-title>
+      <mat-panel-description *ngIf="!isMember">
+        <mat-icon id="memberIcon">highlight_off</mat-icon> Workouts, exercise, and history will not be saved
+      </mat-panel-description>
+      <mat-panel-description *ngIf="isMember">
+        <mat-icon id="memberIcon">verified_user</mat-icon> Hello, {{user!}} Your workouts, exercise, and history will be saved
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p>Simple workout progam choices will be here</p>
+    <!-- <app-programs></app-programs> -->
+  </mat-expansion-panel>
+</mat-accordion>

@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'workOut';
-
-
+  public loading: Boolean = false;
+  public error: any = null;
 
   //public countNum: number;
 
