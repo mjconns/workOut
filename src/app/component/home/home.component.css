@@ -16,3 +16,13 @@
 #memberIcon {
   font-size: 19px !important;
 }
+
+.mat-card {
+  margin-bottom: 5px;
+  background-color: rgb(239, 240, 241);
+}
+
+.mat-expansion-panel {
+  max-width: 95%;
+  margin-left: 2.5%;
+}

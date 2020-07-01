@@ -2,7 +2,6 @@
 
 
 <mat-accordion>
-
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -13,13 +12,17 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
+    <strong>
+      <p>Complete registration</p>
+    </strong>
+
     <form class="mainForm">
 
       <mat-form-field appearance="outline" id="firstOfItsName">
         <mat-label>Create username</mat-label>
         <input matInput type="text" (change)="checkUsername($event.target.value)" placeholder="Ex. pat@example.com"
           [formControl]="userFormControl">
-        <mat-icon *ngIf="userFormControl.valid" matffix>check_circle</mat-icon>
+        <mat-icon *ngIf="userFormControl.valid" matSuffix>check_circle</mat-icon>
         <mat-hint>Minimum of 8 characters</mat-hint>
         <mat-error *ngIf="userFormControl.hasError('username') && !userFormControl.hasError('required')">
           Please enter a username with 8 or more characters
@@ -93,11 +96,15 @@
         <mat-icon id="memberIcon">highlight_off</mat-icon> Workouts, exercise, and history will not be saved
       </mat-panel-description>
       <mat-panel-description *ngIf="isMember">
-        <mat-icon id="memberIcon">verified_user</mat-icon> Hello, {{user!}} Your workouts, exercise, and history will be saved
+        <mat-icon id="memberIcon">verified_user</mat-icon> Hello, {{user!}} Your workouts, exercise, and history will be
+        saved
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <p>Simple workout progam choices will be here</p>
-    <!-- <app-programs></app-programs> -->
+    <strong>
+      <p>Choose a template below or create your own</p>
+    </strong>
+
+    <app-work-out-programs></app-work-out-programs>
   </mat-expansion-panel>
 </mat-accordion>

@@ -17,6 +17,7 @@ import { StartWorkOutComponent } from './component/start-work-out/start-work-out
 import { PlaceHolderComponent } from './component/place-holder/place-holder.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { WorkOutProgramsComponent } from './component/work-out-programs/work-out-programs.component';
 
 //Services
 
@@ -28,7 +29,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     PlaceHolderComponent,
     ToolbarComponent,
     NavbarComponent,
-    HomeTSComponent
+    HomeTSComponent,
+    WorkOutProgramsComponent
   ],
 
   imports: [
